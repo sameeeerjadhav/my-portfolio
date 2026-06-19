@@ -12,30 +12,29 @@ interface ExperienceProps {
 }
 
 const ExperienceCard = ({ role, company, duration, location, description, color }: ExperienceProps) => (
-  <div className={`relative bg-white border-4 border-black p-6 md:p-8 pt-28 md:pt-8 rounded-3xl border-b-8 border-r-8 hover:-translate-y-2 hover:border-b-4 hover:border-r-4 transition-all z-10 w-full h-full shadow-neo mt-12 md:mt-6 flex flex-col`}>
+  <div className={`relative bg-white border-4 border-black p-5 md:p-8 pt-24 md:pt-8 rounded-3xl border-b-8 border-r-8 hover:-translate-y-2 hover:border-b-4 hover:border-r-4 transition-all z-10 w-full h-full shadow-neo mt-12 flex flex-col`}>
 
-
-    <div className="absolute -top-8 md:-top-6 left-4 right-4 md:left-auto md:right-8 flex flex-col gap-2 font-mono font-bold text-xs md:text-sm bg-custom-yellow px-4 py-3 rounded-xl border-4 border-black shadow-[4px_4px_0_rgba(0,0,0,1)] z-20 transform hover:rotate-0 transition-transform">
+    <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-[90%] md:w-auto md:left-auto md:-translate-x-0 md:right-8 flex flex-col gap-2 font-mono font-bold text-xs md:text-sm bg-custom-yellow px-4 py-3 rounded-xl border-4 border-black shadow-[4px_4px_0_rgba(0,0,0,1)] z-20">
       <div className="flex items-center gap-2">
-        <FaCalendarAlt className="text-black" /> {duration}
+        <FaCalendarAlt className="text-black shrink-0" /> <span className="truncate">{duration}</span>
       </div>
       <div className="flex items-center gap-2">
-        <FaMapMarkerAlt className="text-black" /> {location}
+        <FaMapMarkerAlt className="text-black shrink-0" /> <span className="truncate">{location}</span>
       </div>
     </div>
 
-    <div className="mt-2 flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
-      <div>
-        <h3 className="text-3xl md:text-4xl font-shrikhand leading-tight mb-2 uppercase tracking-wide">{role}</h3>
-        <div className="flex items-center gap-2 text-lg font-bold">
-          <span className={`px-3 py-1 border-2 border-black rounded-md ${color} shadow-neo-sm`}>
+    <div className="mt-2 flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4 w-full">
+      <div className="w-full">
+        <h3 className="text-2xl md:text-3xl font-shrikhand leading-tight mb-3 uppercase tracking-wide break-words">{role}</h3>
+        <div className="flex items-center gap-2 text-sm md:text-lg font-bold">
+          <span className={`px-3 py-1 border-2 border-black rounded-md ${color} shadow-neo-sm inline-block`}>
             {company}
           </span>
         </div>
       </div>
     </div>
 
-    <div className="text-base font-medium bg-gray-50 p-4 rounded-xl border-2 border-black leading-relaxed shadow-inner mt-auto">
+    <div className="text-sm md:text-base font-medium bg-gray-50 p-4 rounded-xl border-2 border-black leading-relaxed shadow-inner mt-auto">
       <div className="flex gap-2 mb-3 border-b-2 border-black pb-3">
         <div className="w-3 h-3 rounded-full bg-custom-red border-2 border-black"></div>
         <div className="w-3 h-3 rounded-full bg-custom-yellow border-2 border-black"></div>
@@ -113,9 +112,9 @@ const Experience = () => {
           </div>
         </div>
 
-        <div className="flex flex-row gap-8 items-stretch relative z-10 px-4 md:px-8 overflow-x-auto pb-12 pt-8 snap-x snap-mandatory w-full custom-scrollbar">
+        <div className="flex flex-row gap-6 md:gap-8 items-stretch relative z-10 px-4 md:px-8 overflow-x-auto pb-12 pt-8 snap-x snap-mandatory w-full custom-scrollbar">
           {experiences.map((exp, index) => (
-            <div key={index} className="min-w-[320px] md:min-w-[450px] flex-shrink-0 snap-center flex">
+            <div key={index} className="w-[85vw] sm:w-[350px] md:w-[450px] flex-shrink-0 snap-center flex">
               <ExperienceCard {...exp} />
             </div>
           ))}
