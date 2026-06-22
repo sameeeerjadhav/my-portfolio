@@ -5,7 +5,8 @@ const companies = [
   { name: "Buhler and Scherler", logo: "/buhler.png", link: "https://portal.labxco.cloud/", color: "bg-custom-blue" },
   { name: "KM Associates", logo: "/kma.jpg", link: "https://kmassociates.in/", color: "bg-custom-pink" },
   { name: "Strandforce", logo: "/strandforce.png", link: "https://strandforce.in/", color: "bg-custom-green" },
-  { name: "Gyanam", logo: "/glogo.jpeg", link: "https://gyanamindia.labxco.in/", color: "bg-custom-yellow" }
+  { name: "Gyanam", logo: "/glogo.jpeg", link: "https://gyanamindia.labxco.in/", color: "bg-custom-yellow" },
+  { name: "Sarvam Enterprises", logo: "/sarvam.jpeg", link: "https://swaraaqua.labxco.in/", color: "bg-custom-purple" }
 ];
 
 const Companies = () => {
