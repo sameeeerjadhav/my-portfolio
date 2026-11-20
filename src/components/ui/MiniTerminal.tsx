@@ -54,16 +54,16 @@ const MiniTerminal = () => {
           break;
 
         case 'skills':
-          addLine('► Java, Python, Angular, React, Spring Boot, Node.js');
-          addLine('► Core CS, MySQL, PostgreSQL, JWT Auth');
+          addLine('► Java, Spring Boot, React, Next.js, Angular, Node.js');
+          addLine('► Docker, Dokploy, n8n, PostgreSQL, Redis, MySQL');
           break;
 
         case 'projects':
-          addLine('1. Healthcare EHR System');
-          addLine('2. AI SQL Workbench (Datalk)');
-          addLine('3. QR Maintenance & Device Management System');
-          addLine('4. Online Exam Portal');
-          addLine('5. QuickChat');
+          addLine('1. Samparkasetu CRM (Tractor-dealer CRM platform)');
+          addLine('2. AI SQL Workbench - Datalk (Gemini AI SQL assistant)');
+          addLine('3. Online Exam Portal (1,000+ concurrent students)');
+          addLine('4. QR Maintenance & Device System (Spring Boot & Angular)');
+          addLine('5. QuickChat (Real-time Socket.io chat)');
           break;
 
         case 'game':

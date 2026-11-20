@@ -45,7 +45,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
               <a href="https://leetcode.com/u/sameeeer_jadhav/" target="_blank" rel="noreferrer" className="flex items-center justify-center gap-2 p-2 bg-orange-200 border-2 border-black rounded-xl hover:translate-y-1 hover:shadow-neo-sm transition-all text-sm">
                   <FaCode /> LeetCode
               </a>
-              <a href="#" target="_blank" rel="noreferrer" className="flex items-center justify-center gap-2 p-2 bg-purple-200 border-2 border-black rounded-xl hover:translate-y-1 hover:shadow-neo-sm transition-all text-sm">
+              <a href="https://sameerjadhavportfolio.vercel.app/" target="_blank" rel="noreferrer" className="flex items-center justify-center gap-2 p-2 bg-purple-200 border-2 border-black rounded-xl hover:translate-y-1 hover:shadow-neo-sm transition-all text-sm">
                   Portfolio
               </a>
             </div>

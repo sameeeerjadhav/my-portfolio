@@ -48,6 +48,14 @@ const ExperienceCard = ({ role, company, duration, location, description, color 
 const Experience = () => {
   const experiences = [
     {
+      role: "Full Stack Developer Intern",
+      company: "Samparkasetu Softwares Pvt. Ltd.",
+      duration: "June 2026 - Present",
+      location: "Remote",
+      description: "Developed and maintained a full-stack CRM platform for tractor dealers, automating daily lead distribution, dealer onboarding, n8n workflows, API integrations, testing, and production deployment using Docker, VPS, and Dokploy.",
+      color: "bg-custom-pink"
+    },
+    {
       role: "Research Intern",
       company: "IIT BHU, Varanasi",
       duration: "May 2026 - Present",

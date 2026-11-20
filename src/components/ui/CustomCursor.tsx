@@ -19,13 +19,15 @@ const CustomCursor = () => {
     <>
       
       <style>{`
-        body, button, a, div { cursor: none !important; }
+        @media (hover: hover) and (pointer: fine) {
+          body, button, a, div { cursor: none !important; }
+        }
       `}</style>
 
      
       <div 
         ref={cursorRef}
-        className="fixed top-0 left-0 pointer-events-none z-[9999]"
+        className="hidden md:block fixed top-0 left-0 pointer-events-none z-[9999]"
         style={{ marginLeft: '-2px', marginTop: '-2px' }} 
       >
         <svg 

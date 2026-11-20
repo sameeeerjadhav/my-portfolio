@@ -1,21 +1,53 @@
 import React from 'react';
-import { FaExternalLinkAlt, FaCode } from 'react-icons/fa';
+import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
 
-const ProjectCard = ({ title, tools, description, link, color }: any) => (
-  <div className={`bg-white border-4 border-black rounded-3xl  p-6 shadow-neo hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all relative overflow-hidden`}>
+interface ProjectProps {
+  title: string;
+  tools: string[];
+  description: string[];
+  liveUrl?: string;
+  githubUrl?: string;
+  color: string;
+}
+
+const ProjectCard = ({ title, tools, description, liveUrl, githubUrl, color }: ProjectProps) => (
+  <div className="bg-white border-4 border-black rounded-3xl p-6 shadow-neo hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all relative overflow-hidden flex flex-col h-full">
     
     <div className={`absolute top-0 left-0 right-0 h-4 ${color} border-b-4 border-black`}></div>
     
-    <div className="mt-4 flex justify-between items-start mb-4">
+    <div className="mt-4 flex justify-between items-start mb-4 gap-2">
         <div>
             <h3 className="text-2xl font-shrikhand">{title}</h3>
-            <span className="bg-red-500 text-white text-xs font-bold px-2 py-1 border border-black rounded-md ml-1 animate-pulse">
-                LIVE PROJECT
-            </span>
+            {liveUrl && (
+              <span className="bg-red-500 text-white text-xs font-bold px-2 py-1 border border-black rounded-md inline-block mt-1 animate-pulse">
+                  LIVE PROJECT
+              </span>
+            )}
         </div>
-        <a href={link} target="_blank" rel="noreferrer" className="bg-black text-white p-2 rounded-lg hover:bg-gray-800 transition-colors">
-            <FaExternalLinkAlt />
-        </a>
+        <div className="flex gap-2 shrink-0">
+          {githubUrl && (
+            <a 
+              href={githubUrl} 
+              target="_blank" 
+              rel="noreferrer" 
+              className="bg-black text-white p-2 rounded-lg hover:bg-gray-800 transition-colors"
+              title="View Code on GitHub"
+            >
+                <FaGithub size={16} />
+            </a>
+          )}
+          {liveUrl && (
+            <a 
+              href={liveUrl} 
+              target="_blank" 
+              rel="noreferrer" 
+              className="bg-custom-yellow text-black border-2 border-black p-2 rounded-lg hover:bg-yellow-400 transition-colors shadow-neo-sm hover:shadow-none"
+              title="Open Live Website"
+            >
+                <FaExternalLinkAlt size={14} />
+            </a>
+          )}
+        </div>
     </div>
 
     <div className="flex flex-wrap gap-2 mb-4">
@@ -26,7 +58,7 @@ const ProjectCard = ({ title, tools, description, link, color }: any) => (
         ))}
     </div>
 
-    <ul className="list-disc list-inside space-y-2 text-sm font-medium border-t-2 border-black pt-4">
+    <ul className="list-disc list-inside space-y-2 text-sm font-medium border-t-2 border-black pt-4 mt-auto">
         {description.map((point: string, i: number) => (
             <li key={i}>{point}</li>
         ))}
@@ -35,65 +67,80 @@ const ProjectCard = ({ title, tools, description, link, color }: any) => (
 );
 
 const Projects = () => {
-    const projects = [
+    const projects: ProjectProps[] = [
       {
-        title: "Healthcare EHR System",
-        color: "bg-custom-purple", 
-        tools: ["Angular", "Spring Boot", "MySQL", "JWT", "REST API"],
-        link: "https://github.com/sameeeerjadhav/EHR_Full_Stack", 
+        title: "Samparkasetu CRM",
+        color: "bg-custom-purple",
+        tools: ["Next.js", "PostgreSQL", "Redis", "n8n", "Docker", "Dokploy"],
+        liveUrl: "https://samparkasetu.com",
         description: [
-          "Built a full-stack Electronic Health Record system featuring patient management, doctor profiles, appointments, medications, orders and secure role-based authentication.",
-          "JWT Authentication and Role-Based Access Control.",
-          "Appointment Management and Medication Tracking.",
-          "Healthcare Workflow Automation."
+          "Built a subscription-based CRM platform automating onboarding and daily lead distribution for tractor dealers.",
+          "Designed n8n workflows integrated with Gupshup API for automated dealer messaging.",
+          "Containerized production deployment on VPS infrastructure using Docker and Dokploy.",
+          "High performance with Redis caching and PostgreSQL schema design."
         ]
       },
       {
         title: "AI SQL Workbench (Datalk)",
         color: "bg-custom-blue",
         tools: ["React", "FastAPI", "Gemini AI", "PostgreSQL", "SQLAlchemy"],
-        link: "https://github.com/sameeeerjadhav/SQL-Agent", 
+        githubUrl: "https://github.com/sameeeerjadhav/SQL-Agent", 
+        liveUrl: "https://datalk.onrender.com/",
         description: [
-          "Developed an AI-powered SQL assistant that converts natural language into SQL queries and automatically visualizes database results.",
-          "Natural Language to SQL and Gemini AI Integration.",
-          "Data Visualization and Secure Schema Isolation.",
-          "Chat-Based Querying."
-        ]
-      },
-      {
-        title: "QR Maintenance & Device Management System",
-        color: "bg-custom-red",
-        tools: ["Angular", "Spring Boot", "MySQL", "JWT", "QR Code"],
-        link: "https://github.com/sameeeerjadhav/digital-maintenance-logbook", 
-        description: [
-          "Developed a QR-based maintenance tracking system for device monitoring, maintenance logging and role-based management.",
-          "QR Device Tracking and Maintenance Logs.",
-          "Role-Based Dashboards and Device Monitoring.",
-          "Secure Backend Architecture."
+          "Developed an AI-powered SQL assistant converting natural language to SQL queries with automatic chart generation.",
+          "Google Gemini AI integration with conversational querying.",
+          "Data visualization and secure multi-tenant schema isolation.",
+          "Production deployment on Render."
         ]
       },
       {
         title: "Online Exam Portal",
         color: "bg-custom-pink",
         tools: ["Laravel 12", "MySQL", "Redis", "Tailwind CSS", "WebSockets"],
-        link: "https://github.com/sameeeerjadhav/online-exam-system",
+        githubUrl: "https://github.com/sameeeerjadhav/online-exam-system",
+        liveUrl: "https://labxco.cloud/gyanam/exam_portal/index.html",
         description: [
-          "Built a scalable online examination platform supporting 1000+ concurrent students with anti-cheating and monitoring capabilities.",
-          "Real-Time Monitoring and Auto Save System.",
-          "Anti-Cheating Protection and Redis Optimization.",
-          "WebSocket Integration."
+          "Scalable examination platform built for 1,000+ concurrent students with real-time proctoring via WebSockets.",
+          "Anti-cheating detection for tab-switching and fullscreen exits.",
+          "Auto-save engine with Redis optimization.",
+          "Role-based authentication with Laravel Sanctum."
+        ]
+      },
+      {
+        title: "QR Maintenance & Device System",
+        color: "bg-custom-red",
+        tools: ["Angular", "Spring Boot", "MySQL", "JWT", "QR Code"],
+        githubUrl: "https://github.com/sameeeerjadhav/digital-maintenance-logbook", 
+        description: [
+          "Developed a QR-based maintenance tracking system for device monitoring and lifecycle logging.",
+          "Role-Based Access Control (RBAC) for Admin, HOD, and Faculty.",
+          "Device maintenance logs and real-time status dashboards.",
+          "Secure Spring Boot REST API backend."
         ]
       },
       {
         title: "QuickChat",
         color: "bg-custom-green",
         tools: ["Node.js", "Express.js", "Socket.io", "MongoDB"],
-        link: "https://github.com/sameeeerjadhav/quickchat-app", 
+        githubUrl: "https://github.com/sameeeerjadhav/quickchat-app", 
+        liveUrl: "https://quickchat-app-woad.vercel.app/",
         description: [
-          "Built a real-time messaging platform with instant communication, authentication and online presence tracking.",
-          "Real-Time Messaging and Socket.io Integration.",
-          "User Authentication and Presence Detection.",
-          "Scalable Deployment."
+          "Real-time instant messaging platform with WebSocket presence detection.",
+          "Authenticated, low-latency group and 1-on-1 chats.",
+          "MongoDB persistent chat storage.",
+          "Deployed across Vercel and Render."
+        ]
+      },
+      {
+        title: "Healthcare EHR System",
+        color: "bg-custom-purple", 
+        tools: ["Angular", "Spring Boot", "MySQL", "JWT", "REST API"],
+        githubUrl: "https://github.com/sameeeerjadhav/EHR_Full_Stack", 
+        description: [
+          "Full-stack Electronic Health Record system with patient & doctor management.",
+          "JWT Authentication and Role-Based Access Control.",
+          "Appointment scheduling and medication tracking.",
+          "Modular enterprise architecture."
         ]
       }
     ];

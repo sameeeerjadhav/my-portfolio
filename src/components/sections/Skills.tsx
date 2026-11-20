@@ -26,32 +26,37 @@ const Skills = () => {
         <SkillCategory 
             title="Languages" 
             color="bg-custom-pink"
-            skills={['Java', 'Python', 'JavaScript', 'TypeScript', 'C++']} 
+            skills={['Java', 'Python', 'JavaScript', 'TypeScript', 'C++', 'SQL']} 
         />
         <SkillCategory 
             title="Frontend" 
             color="bg-custom-blue"
-            skills={['Angular', 'React', 'Next.js', 'Tailwind CSS', 'HTML5', 'CSS3']} 
+            skills={['React', 'Next.js', 'Angular', 'Tailwind CSS', 'HTML5', 'CSS3']} 
         />
         <SkillCategory 
             title="Backend" 
             color="bg-custom-green"
-            skills={['Spring Boot', 'Node.js', 'Express.js', 'REST APIs', 'JWT Authentication']} 
+            skills={['Spring Boot', 'Node.js', 'Express.js', 'REST APIs', 'JWT Auth', 'WebSockets']} 
         />
         <SkillCategory 
             title="Databases" 
             color="bg-custom-yellow"
-            skills={['PostgreSQL', 'MySQL', 'MongoDB']} 
+            skills={['PostgreSQL', 'MySQL', 'MongoDB', 'Redis']} 
         />
         <SkillCategory 
-            title="Core CS" 
-            color="bg-custom-red"
-            skills={['Data Structures & Algorithms', 'Object Oriented Programming', 'System Design', 'MVC Architecture', 'WebSockets', 'Authentication & Authorization']} 
-        />
-        <SkillCategory 
-            title="Tools" 
+            title="DevOps & Deploy" 
             color="bg-purple-300"
-            skills={['Git', 'GitHub', 'Postman', 'Docker', 'Vercel', 'Render', 'Hostinger']} 
+            skills={['Docker', 'Dokploy', 'VPS Hosting', 'Vercel', 'Render', 'Hostinger']} 
+        />
+        <SkillCategory 
+            title="Automation & Tools" 
+            color="bg-custom-green"
+            skills={['n8n Automation', 'Gupshup API', 'Git', 'GitHub', 'Postman']} 
+        />
+        <SkillCategory 
+            title="Core CS & Architecture" 
+            color="bg-custom-red"
+            skills={['Data Structures & Algorithms', 'System Design', 'OOP', 'MVC Architecture', 'RBAC']} 
         />
       </div>
     </section>
