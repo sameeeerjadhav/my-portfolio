@@ -12,6 +12,7 @@ import CustomCursor from './components/ui/CustomCursor';
 import Marquee from './components/ui/Marquee';
 import Preloader from './components/ui/Preloader';
 import MiniTerminal from './components/ui/MiniTerminal';
+import ChatBot from './components/ui/ChatBot';
 
 function App() {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -68,6 +69,7 @@ function App() {
 
 
       <Footer />
+      <ChatBot />
 
     </div>
   );
