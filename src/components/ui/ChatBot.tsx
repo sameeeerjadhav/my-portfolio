@@ -3,12 +3,10 @@ import {
   FaRobot, 
   FaTimes, 
   FaPaperPlane, 
-  FaKey, 
   FaTrash, 
-  FaCheck,
   FaExternalLinkAlt 
 } from 'react-icons/fa';
-import { askSameerAI, getGroqApiKey, setGroqApiKey, type ChatMessage } from '../../services/groqService';
+import { askSameerAI, type ChatMessage } from '../../services/groqService';
 
 const SUGGESTED_PROMPTS = [
   "Tell me about Sameer in 3 sentences 🧠",
@@ -20,7 +18,7 @@ const SUGGESTED_PROMPTS = [
 
 const INITIAL_MESSAGE: ChatMessage = {
   role: 'assistant',
-  content: "Hey there! 👋 I am **Sameer AI** — powered by Groq. Ask me anything about Sameer's projects, experience at Samparkasetu, tech stack, or why he's your next great hire!"
+  content: "Hey there! 👋 I am **SameerBot**. Ask me anything about Sameer's projects, experience at Samparkasetu, tech stack, or why he's your next great hire!"
 };
 
 const ChatBot: React.FC = () => {
@@ -28,21 +26,9 @@ const ChatBot: React.FC = () => {
   const [messages, setMessages] = useState<ChatMessage[]>([INITIAL_MESSAGE]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  
-  // API Key management state
-  const [showKeyModal, setShowKeyModal] = useState(false);
-  const [apiKeyInput, setApiKeyInput] = useState('');
-  const [hasApiKey, setHasApiKey] = useState(false);
-  const [savedSuccess, setSavedSuccess] = useState(false);
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    const key = getGroqApiKey();
-    setHasApiKey(Boolean(key));
-    if (key) setApiKeyInput(key);
-  }, []);
 
   useEffect(() => {
     if (isOpen) {
@@ -71,16 +57,6 @@ const ChatBot: React.FC = () => {
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const handleSaveKey = () => {
-    setGroqApiKey(apiKeyInput);
-    setHasApiKey(Boolean(apiKeyInput.trim()));
-    setSavedSuccess(true);
-    setTimeout(() => {
-      setSavedSuccess(false);
-      setShowKeyModal(false);
-    }, 1200);
   };
 
   const handleClearHistory = () => {
@@ -158,22 +134,12 @@ const ChatBot: React.FC = () => {
                 <div className="font-shrikhand text-base leading-none text-custom-yellow">SameerBot AI</div>
                 <div className="font-mono text-[11px] text-green-400 flex items-center gap-1 mt-0.5">
                   <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-                  ONLINE • GROQ POWERED
+                  ONLINE • AI ASSISTANT
                 </div>
               </div>
             </div>
 
             <div className="flex items-center gap-2">
-              <button
-                onClick={() => setShowKeyModal(!showKeyModal)}
-                title={hasApiKey ? "Groq API Key Configured" : "Enter Groq API Key"}
-                className={`p-1.5 border-2 border-white rounded-lg transition-colors cursor-pointer ${
-                  hasApiKey ? "bg-custom-green text-black" : "bg-custom-yellow text-black animate-bounce"
-                }`}
-              >
-                <FaKey size={14} />
-              </button>
-              
               <button
                 onClick={handleClearHistory}
                 title="Clear Chat History"
@@ -191,47 +157,6 @@ const ChatBot: React.FC = () => {
               </button>
             </div>
           </div>
-
-          {/* API Key Drawer Modal */}
-          {showKeyModal && (
-            <div className="bg-custom-yellow border-b-4 border-black p-4 font-mono text-xs animate-fadeIn">
-              <div className="flex justify-between items-center mb-2 font-bold text-sm">
-                <span>🔑 Groq API Key Settings</span>
-                <button onClick={() => setShowKeyModal(false)} className="cursor-pointer">
-                  <FaTimes />
-                </button>
-              </div>
-              <p className="text-gray-800 mb-2 font-medium">
-                Enter your free Groq API key to power real-time AI answers:
-              </p>
-              <div className="flex gap-2">
-                <input
-                  type="password"
-                  placeholder="gsk_..."
-                  value={apiKeyInput}
-                  onChange={(e) => setApiKeyInput(e.target.value)}
-                  className="flex-1 bg-white border-2 border-black px-3 py-1.5 rounded-lg outline-none font-mono"
-                />
-                <button
-                  onClick={handleSaveKey}
-                  className="bg-black text-white px-3 py-1.5 rounded-lg border-2 border-black font-bold hover:bg-gray-800 cursor-pointer flex items-center gap-1"
-                >
-                  {savedSuccess ? <FaCheck className="text-green-400" /> : "Save"}
-                </button>
-              </div>
-              <div className="mt-2 flex justify-between items-center text-[10px] text-gray-700">
-                <a 
-                  href="https://console.groq.com/keys" 
-                  target="_blank" 
-                  rel="noreferrer" 
-                  className="underline hover:text-black font-bold flex items-center gap-1"
-                >
-                  Get free API key at console.groq.com <FaExternalLinkAlt size={8} />
-                </a>
-                <span>Stored securely in your browser</span>
-              </div>
-            </div>
-          )}
 
           {/* Messages Area */}
           <div className="flex-1 p-4 overflow-y-auto bg-gray-50 flex flex-col gap-3 font-mono text-xs sm:text-sm">

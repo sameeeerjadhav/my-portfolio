@@ -34,15 +34,18 @@ export async function askSameerAI(
     // Helpful local fallback if API key isn't provided yet
     const query = userPrompt.toLowerCase();
     if (query.includes('project') || query.includes('work')) {
-      return `Here's the scoop! Sameer built **Samparkasetu CRM** (a tractor dealership platform running on Next.js, Redis & Dokploy), **Datalk** (AI SQL assistant with Gemini), and an **Online Exam Portal** supporting 1,000+ simultaneous students! 🚀\n\n*(P.S. Add your Groq API key via the key icon above to unlock my full witty LLM powers!)*`;
+      return `Here's the scoop! Sameer built **Samparkasetu CRM** (a tractor dealership platform running on Next.js, Redis & Dokploy), **Datalk** (AI SQL assistant with Gemini), and an **Online Exam Portal** supporting 1,000+ simultaneous students! 🚀`;
     }
-    if (query.includes('hire') || query.includes('job') || query.includes('contact') || query.includes('email')) {
+    if (query.includes('hire') || query.includes('job') || query.includes('contact') || query.includes('email') || query.includes('available') || query.includes('role')) {
       return `YES! Sameer is actively open for Full Stack, Software Engineering, and Backend roles! You can reach him at **sameerpjadhav12@gmail.com** or on [LinkedIn](https://linkedin.com/in/sameer-jadhav-a040921b5). He responds faster than a cached Redis query! ⚡`;
     }
     if (query.includes('resume') || query.includes('cv')) {
       return `Ah, the legendary resume! Legend says it's stored in a vault labeled *"Privacy Notice"*. But between you and me: 8.79 CGPA at Sanjivani University, intern at Samparkasetu & HCL Tech, 3rd place in Taiwan Spectra Vision, and master of Spring Boot & React! 🏆`;
     }
-    return `Hey there! I am **SameerBot** 🤖. To give you personalized, ultra-witty, deep-dive answers, please click the 🔑 icon in the header to enter your **Groq API key** (or add \`VITE_GROQ_API_KEY\` to your \`.env\`).\n\nUntil then, feel free to ask about Sameer's projects, skills, or why you should hire him!`;
+    if (query.includes('skill') || query.includes('stack') || query.includes('language') || query.includes('tech')) {
+      return `Sameer's tech powerhouse includes **Java, Spring Boot, React, Next.js, Angular, Node.js, PostgreSQL, Docker, Dokploy**, and **n8n Automation**! 💻`;
+    }
+    return `Hey there! I am **SameerBot** 🤖.\n\n✨ **This live conversational AI feature will be available soon!** ✨\n\nUntil then, feel free to ask about Sameer's **projects**, **skills**, **experience**, or why you should hire him!`;
   }
 
   const messages = [
